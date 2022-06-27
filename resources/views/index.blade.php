@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Bucket Ball Task</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
@@ -17,7 +17,7 @@
             </a>
         </div>
     </nav>
-    <div class="container">
+    <div class="container mb-5">
 
         <div class="row mt-3">
             <div class="col-lg-6">
@@ -28,14 +28,16 @@
                             <th scope="col">#</th>
                             <th scope="col">Bucket</th>
                             <th scope="col">Size</th>
+                            <th scope="col">Space left</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($bucketData as $bucketList)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
+                                <th scope="row">{{ $loop->iteration }}.</th>
                                 <td>{{ $bucketList['name'] }}</td>
                                 <td>{{ $bucketList['size'] }}</td>
+                                <td></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -54,7 +56,7 @@
                     <tbody>
                         @foreach ($ballData as $ballList)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
+                                <th scope="row">{{ $loop->iteration }}.</th>
                                 <td>{{ $ballList['name'] }}</td>
                                 <td>{{ $ballList['size'] }}</td>
                             </tr>
@@ -62,7 +64,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 p-5">
                 <form method="post" action="{{ url('submit') }}">
                     @csrf
                     <div class="mb-3">
@@ -88,18 +90,19 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 p-5">
                 <div class="card">
+                    <h4 class="card-title text-center my-3">Results</h4>
                     <div class="card-body">
                         <pre>
 
                         @php
-                            if (isset($bucketData)) {
-                                print_r($bucketData);
-                            }
-                            if (isset($ballData)) {
-                                print_r($ballData);
-                            }
+                            // if (isset($bucketData)) {
+                            //     print_r($bucketData);
+                            // }
+                            // if (isset($ballData)) {
+                            //     print_r($ballData);
+                            // }
                             if (isset($data)) {
                                 print_r($data);
                             }
